@@ -96,8 +96,8 @@ function nextFrame(){
 	let fl = field.length-1;
 	for(let i=1; i<field.length-1; i++){
 		for(let j=1; j<field[0].length-1; j++){
-			velocityField[i][j][0] = field[i][j][0] + deltaTime*(-(field[i+1][j][0]-field[i][j][0])*(field[i][j][0]+field[i][j][1]) - PressConst*(prsField[i+1][j]-prsField[i][j]) + ViscosityConst*(field[i+1][j][0]-2*field[i][j][0]+field[i-1][j][0] + field[i][j+1][0]-2*field[i][j][0]+field[i][j-1][0]));
-			velocityField[i][j][1] = field[i][j][1] + deltaTime*(-(field[i][j+1][1]-field[i][j][1])*(field[i][j][0]+field[i][j][1]) - 1 - PressConst*(prsField[i][j+1]-prsField[i][j]) + ViscosityConst*(field[i+1][j][1]-2*field[i][j][1]+field[i-1][j][1] + field[i][j+1][1]-2*field[i][j][1]+field[i][j-1][1]));
+			velocityField[i][j][0] = field[i][j][0] + deltaTime*(-(field[i+1][j][0]-field[i][j][0])*(field[i][j][0]+field[i][j][1]) - PressConst*(prsField[i+1][j]-prsField[i][j-1])/2 + ViscosityConst*(field[i+1][j][0]-2*field[i][j][0]+field[i-1][j][0] + field[i][j+1][0]-2*field[i][j][0]+field[i][j-1][0]));
+			velocityField[i][j][1] = field[i][j][1] + deltaTime*(-(field[i][j+1][1]-field[i][j][1])*(field[i][j][0]+field[i][j][1]) - 1 - PressConst*(prsField[i][j+1]-prsField[i][j-1])/2 + ViscosityConst*(field[i+1][j][1]-2*field[i][j][1]+field[i-1][j][1] + field[i][j+1][1]-2*field[i][j][1]+field[i][j-1][1]));
 		}
 	}
 	for(let i=1; i<field.length-1; i++){
